@@ -16,19 +16,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 40,
    "metadata": {},
    "outputs": [],
    "source": [
     "# Dependencies\n",
     "from bs4 import BeautifulSoup\n",
-    "import requests\n",
-    "from splinter import Browser"
+    "import requests"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 41,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -38,7 +37,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 42,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -48,7 +47,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 43,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -58,7 +57,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 44,
    "metadata": {},
    "outputs": [
     {
@@ -81,7 +80,7 @@
       "  <link color=\"#e48b55\" href=\"/safari-pinned-tab.svg\" rel=\"mask-icon\"/>\n",
       "  <meta content=\"#000000\" name=\"theme-color\"/>\n",
       "  <meta content=\"authenticity_token\" name=\"csrf-param\">\n",
-      "   <meta content=\"nJpkz7eGD7tcuUbHo1pBc6UoAg3ym9dXgpXyTXch9xky1Im17ttgjNJIl3tVrBd9ZIH0k4s25o9yyIkc9lFUHQ==\" name=\"csrf-token\">\n",
+      "   <meta content=\"RxCiOjRX1YPCqCrBszIY8i05GX8XVTE86tM+2j8jyBK1tiyO2LqrpOc4LHOAmH8o1+UtB9aAL0ldCERwW2rkyg==\" name=\"csrf-token\">\n",
       "    <title>\n",
       "     News  – NASA’s Mars Exploration Program\n",
       "    </title>\n",
@@ -731,7 +730,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 45,
    "metadata": {},
    "outputs": [
     {
@@ -740,7 +739,7 @@
        "\"The Launch Is Approaching for NASA's Next Mars Rover, Perseverance\""
       ]
      },
-     "execution_count": 6,
+     "execution_count": 45,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -749,13 +748,12 @@
     "#Latest news title\n",
     "news_title=soup.body.find('div',class_=\"content_title\").text\n",
     "news_title=news_title.strip('\\n\\n')\n",
-    "news_title\n",
-    "\n"
+    "news_title"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 46,
    "metadata": {},
    "outputs": [
     {
@@ -764,7 +762,7 @@
        "\"The Red Planet's surface has been visited by eight NASA spacecraft. The ninth will be the first that includes a roundtrip ticket in its flight plan. \""
       ]
      },
-     "execution_count": 7,
+     "execution_count": 46,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -777,60 +775,6 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "news=dict({'title':news_title,'text':news_p})"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 20,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def news_function():\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    from splinter import Browser\n",
-    "    url='https://mars.nasa.gov/news/'\n",
-    "    executable_path = {'executable_path': 'chromedriver.exe'}\n",
-    "    browser = Browser('chrome', **executable_path, headless=False)\n",
-    "    browser.visit(url)\n",
-    "    response = requests.get(url)\n",
-    "    soup = BeautifulSoup(response.text, 'html.parser')\n",
-    "    news_title=soup.body.find('div',class_=\"content_title\").text\n",
-    "    news_title=news_title.strip('\\n\\n')\n",
-    "    news_p=soup.body.find('div',class_=\"rollover_description_inner\").text\n",
-    "    news_p=news_p.strip('\\n')\n",
-    "    news=dict({'title':news_title,'text':news_p})\n",
-    "    return news "
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 22,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "{'title': \"The Launch Is Approaching for NASA's Next Mars Rover, Perseverance\",\n",
-       " 'text': \"The Red Planet's surface has been visited by eight NASA spacecraft. The ninth will be the first that includes a roundtrip ticket in its flight plan. \"}"
-      ]
-     },
-     "execution_count": 22,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "news_function()"
-   ]
-  },
-  {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
@@ -839,7 +783,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": 47,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -851,7 +795,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": 48,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -862,7 +806,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 36,
+   "execution_count": 49,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -873,7 +817,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 37,
+   "execution_count": 50,
    "metadata": {},
    "outputs": [
     {
@@ -882,7 +826,7 @@
        "'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'"
       ]
      },
-     "execution_count": 37,
+     "execution_count": 50,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -893,7 +837,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
+   "execution_count": 51,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -904,7 +848,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 39,
+   "execution_count": 52,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -913,7 +857,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
+   "execution_count": 53,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -923,7 +867,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 41,
+   "execution_count": 54,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -932,7 +876,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
+   "execution_count": 55,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -942,7 +886,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 43,
+   "execution_count": 56,
    "metadata": {},
    "outputs": [
     {
@@ -970,7 +914,7 @@
       "  <meta content=\"IE=edge,chrome=1\" http-equiv=\"X-UA-Compatible\"/>\n",
       "  <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>\n",
       "  <title>\n",
-      "   Space Images | Study: Third of Big Groundwater Basins in Distress\n",
+      "   Space Images | Galaxy Cluster IDCS J1426\n",
       "  </title>\n",
       "  <link href=\"/assets/stylesheets/manifest.css\" media=\"all\" rel=\"stylesheet\" type=\"text/css\"/>\n",
       "  <link href=\"/assets/stylesheets/print.css\" media=\"print\" rel=\"stylesheet\" type=\"text/css\"/>\n",
@@ -981,10 +925,10 @@
       "  <script src=\"/assets/javascripts/vendor/jquery.fancybox-thumbs.js\" type=\"text/javascript\">\n",
       "  </script>\n",
       "  <link href=\"css/styles.css\" media=\"all\" rel=\"stylesheet\" type=\"text/css\"/>\n",
-      "  <meta content=\"https://www.jpl.nasa.gov/spaceimages/images/mediumsize/PIA19685_ip.jpg\" property=\"og:image\">\n",
-      "   <meta content=\"https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA19685\" property=\"og:url\">\n",
-      "    <meta content=\"Study: Third of Big Groundwater Basins in Distress\" property=\"og:title\">\n",
-      "     <meta content=\"UC Irvine studies using NASA GRACE data find a third of Earth's largest groundwater basins are being rapidly depleted by human use, despite little data about how much water remains.\" property=\"og:description\"/>\n",
+      "  <meta content=\"https://www.jpl.nasa.gov/spaceimages/images/mediumsize/PIA20063_ip.jpg\" property=\"og:image\">\n",
+      "   <meta content=\"https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA20063\" property=\"og:url\">\n",
+      "    <meta content=\"Galaxy Cluster IDCS J1426\" property=\"og:title\">\n",
+      "     <meta content=\"Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA's Great Observatories. This rare galaxy cluster, located 10 billion light-years from Earth, is almost as massive as 500 trillion suns.\" property=\"og:description\"/>\n",
       "    </meta>\n",
       "   </meta>\n",
       "  </meta>\n",
@@ -1381,14 +1325,14 @@
       "\t\t  \"@type\": \"NewsArticle\",\n",
       "\t\t  \"mainEntityOfPage\": {\n",
       "\t\t    \"@type\": \"WebPage\",\n",
-      "\t\t    \"@id\": \"https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA19685\"\n",
+      "\t\t    \"@id\": \"https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA20063\"\n",
       "\t\t  },\n",
-      "\t\t  \"headline\": \"Study: Third of Big Groundwater Basins in Distress\",\n",
-      "\t\t  \"image\": \"https://www.jpl.nasa.gov/spaceimages/images/wallpaper/PIA19685-640x350.jpg\",\n",
-      "\t\t  \"datePublished\": \"June 16, 2015\",\n",
+      "\t\t  \"headline\": \"Galaxy Cluster IDCS J1426\",\n",
+      "\t\t  \"image\": \"https://www.jpl.nasa.gov/spaceimages/images/wallpaper/PIA20063-640x350.jpg\",\n",
+      "\t\t  \"datePublished\": \"January 7, 2016\",\n",
       "\t\t  \"author\": {\n",
       "\t\t    \"@type\": \"Organization\",\n",
-      "\t\t    \"name\": \"NASA/JPL-Caltech/University of California, Irvine\"\n",
+      "\t\t    \"name\": \"NASA/CXC/Univ of Missouri/M.Brodwin et al; NASA/STScI; JPL/CalTech\"\n",
       "\t\t  },\n",
       "\t\t   \"publisher\": {\n",
       "\t\t    \"@type\": \"Organization\",\n",
@@ -1398,7 +1342,7 @@
       "\t\t      \"url\": \"https://www.jpl.nasa.gov/assets/images/logo_nasa_trio_black.png\"\n",
       "\t\t    }\n",
       "\t\t  },\n",
-      "\t\t  \"description\": \"UC Irvine studies using NASA GRACE data find a third of Earth&#039;s largest groundwater basins are being rapidly depleted by human use, despite little data about how much water remains.\"\n",
+      "\t\t  \"description\": \"Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA&#039;s Great Observatories. This rare galaxy cluster, located 10 billion light-years from Earth, is almost as massive as 500 trillion suns.\"\n",
       "\t\t}\n",
       "     </script>\n",
       "     <script>\n",
@@ -1407,29 +1351,29 @@
       "     <div class=\"header_mask\">\n",
       "     </div>\n",
       "     <div class=\"article_nav\">\n",
-      "      <a class=\"article_nav_block prev\" href=\"?id=PIA11775\">\n",
+      "      <a class=\"article_nav_block prev\" href=\"?id=PIA20150\">\n",
       "       <div class=\"link_box\">\n",
       "        <img alt=\"previous article arrow\" src=\"/assets/images/arrow_left_lighttheme.png\"/>\n",
       "       </div>\n",
       "       <div class=\"article_details\" id=\"prev_details\">\n",
       "        <div class=\"img\">\n",
-      "         <img alt=\"This observation from NASA's Mars Reconnaissance Orbiter targets some unknown fill or mantling material within valleys on a crater floor and within a central pit.\" src=\"/spaceimages/images/wallpaper/PIA11775-640x350.jpg\" title=\"This observation from NASA's Mars Reconnaissance Orbiter targets some unknown fill or mantling material within valleys on a crater floor and within a central pit.\"/>\n",
+      "         <img alt=\"This image of Ceres, taken by NASA's Dawn spacecraft, shows terrain in the southern hemisphere within the large crater called Yalode. The prominent crater at top-right is called Lono. The crater directly below it is called Besua.\" src=\"/spaceimages/images/wallpaper/PIA20150-640x350.jpg\" title=\"This image of Ceres, taken by NASA's Dawn spacecraft, shows terrain in the southern hemisphere within the large crater called Yalode. The prominent crater at top-right is called Lono. The crater directly below it is called Besua.\"/>\n",
       "        </div>\n",
       "        <div class=\"title\">\n",
-      "         Fill or Mantling Material in a Crater\n",
+      "         Dawn HAMO Image 87\n",
       "        </div>\n",
       "       </div>\n",
       "      </a>\n",
-      "      <a class=\"article_nav_block next\" href=\"?id=PIA19488\">\n",
+      "      <a class=\"article_nav_block next\" href=\"?id=PIA20295\">\n",
       "       <div class=\"link_box\">\n",
       "        <img alt=\"next article arrow\" src=\"/assets/images/arrow_right_lighttheme.png\"/>\n",
       "       </div>\n",
       "       <div class=\"article_details\" id=\"next_details\">\n",
       "        <div class=\"img\">\n",
-      "         <img alt=\"The THEMIS VIS camera contains 5 filters. The data from different filters can be combined in multiple ways to create a false color image. This image from NASA's 2001 Mars Odyssey spacecraft shows a small portion of the floor of Huygens Crater.\" src=\"/spaceimages/images/wallpaper/PIA19488-640x350.jpg\" title=\"The THEMIS VIS camera contains 5 filters. The data from different filters can be combined in multiple ways to create a false color image. This image from NASA's 2001 Mars Odyssey spacecraft shows a small portion of the floor of Huygens Crater.\"/>\n",
+      "         <img alt=\"On Jan. 6, 2016, NASA's Terra spacecraft flew over Rosario, Argentina located northwest of Buenos Aires, on the western shore of the Parana River where the floodplain is still under water or wet.\" src=\"/spaceimages/images/wallpaper/PIA20295-640x350.jpg\" title=\"On Jan. 6, 2016, NASA's Terra spacecraft flew over Rosario, Argentina located northwest of Buenos Aires, on the western shore of the Parana River where the floodplain is still under water or wet.\"/>\n",
       "        </div>\n",
       "        <div class=\"title\">\n",
-      "         Huygens Crater - False Color\n",
+      "         Argentine Flooding Observed by NASA Satellite\n",
       "        </div>\n",
       "       </div>\n",
       "      </a>\n",
@@ -1443,25 +1387,77 @@
       "           Images\n",
       "          </a>\n",
       "          <span class=\"release_date\">\n",
-      "           | June 16, 2015\n",
+      "           | January 7, 2016\n",
       "          </span>\n",
       "         </h2>\n",
       "         <h1 class=\"article_title\">\n",
-      "          Study: Third of Big Groundwater Basins in Distress\n",
+      "          Galaxy Cluster IDCS J1426\n",
       "         </h1>\n",
       "        </header>\n",
       "        <figure class=\"lede\">\n",
-      "         <a href=\"/spaceimages/images/largesize/PIA19685_hires.jpg\">\n",
-      "          <img alt=\"UC Irvine studies using NASA GRACE data find a third of Earth's largest groundwater basins are being rapidly depleted by human use, despite little data about how much water remains.\" class=\"main_image\" src=\"/spaceimages/images/largesize/PIA19685_hires.jpg\" title=\"UC Irvine studies using NASA GRACE data find a third of Earth's largest groundwater basins are being rapidly depleted by human use, despite little data about how much water remains.\"/>\n",
+      "         <a href=\"/spaceimages/images/largesize/PIA20063_hires.jpg\">\n",
+      "          <img alt=\"Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA's Great Observatories. This rare galaxy cluster, located 10 billion light-years from Earth, is almost as massive as 500 trillion suns.\" class=\"main_image\" src=\"/spaceimages/images/largesize/PIA20063_hires.jpg\" title=\"Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA's Great Observatories. This rare galaxy cluster, located 10 billion light-years from Earth, is almost as massive as 500 trillion suns.\"/>\n",
       "         </a>\n",
       "        </figure>\n",
       "        <div class=\"clearfix\" id=\"primary_column\">\n",
       "         <div class=\"wysiwyg_content\">\n",
       "          <p>\n",
-      "           Groundwater storage trends for Earth's 37 largest aquifers from UCI-led study using NASA GRACE data (2003-2013). Of these, 21 have exceeded sustainability tipping points and are being depleted, with 13 considered significantly distressed, threatening regional water security and resilience.\n",
+      "           <center>\n",
+      "            <a href=\"//photojournal.jpl.nasa.gov/figures/PIA20063_fig1.jpg\">\n",
+      "             <img alt=\"Click here for larger version of PIA20063\" src=\"//photojournal.jpl.nasa.gov/figures/PIA20063_fig1_thumb.jpg\"/>\n",
+      "            </a>\n",
+      "            <br/>\n",
+      "            Annotated Version\n",
+      "            <br/>\n",
+      "            <a href=\"//photojournal.jpl.nasa.gov/tiff/PIA20063_fig1.tif\">\n",
+      "             Download the high resolution TIFF file\n",
+      "            </a>\n",
+      "            <font size=\"-1\">\n",
+      "             <br/>\n",
+      "             <b>\n",
+      "              Click on the image for larger browse version\n",
+      "             </b>\n",
+      "            </font>\n",
+      "           </center>\n",
       "          </p>\n",
       "          <p>\n",
-      "           GRACE is a collaborative endeavor involving the Center for Space Research at the University of Texas, Austin; NASA's Jet Propulsion Laboratory, Pasadena, Calif.; the German Space Agency and Germany's National Research Center for Geosciences, Potsdam.\n",
+      "           Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA's Great Observatories. This multi-wavelength image shows this galaxy cluster, called IDCS J1426.5+3508 (IDCS 1426 for short), in X-rays recorded by the Chandra X-ray Observatory in blue, visible light observed by the Hubble Space Telescope in green, and infrared light detected by the Spitzer Space Telescope in red.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           This rare galaxy cluster, which is located 10 billion light-years from Earth, is almost as massive as 500 trillion suns. This object has important implications for understanding how such megastructures formed and evolved early in the universe. The light astronomers observed from IDCS 1426 began its journey to Earth when the universe was less than a third of its current age. It is the most massive galaxy cluster detected at such an early time.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           First discovered by the Spitzer Space Telescope in 2012, IDCS 1426 was then observed using the Hubble Space Telescope and the Keck Observatory to determine its distance. Observations from the Combined Array for Millimeter-wave Astronomy indicated it was extremely massive. New data from the Chandra X-ray Observatory confirm the galaxy cluster's mass and show that about 90 percent of this mass is in the form of dark matter -- the mysterious substance that has so far been detected only through its gravitational pull on normal matter composed of atoms.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           There is a region of bright X-ray emission (seen as blue-white) near the middle of the cluster, but not exactly at the center. The location of this \"core\" of gas suggests that the cluster may have had a collision or interaction with another massive system of galaxies relatively recently, perhaps within about the last 500 million years. This would cause the core to slosh around like wine in a moving glass and become offset, as it appears to be in the Chandra data. Such a merger would not be surprising, given that astronomers are observing IDCS 1426 when the universe was only 3.8 billion years old. Scientists think that, in order for such an enormous structure to form so rapidly, mergers with smaller clusters would likely play a role in the large cluster's growth.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           In addition, while still extremely hot, the bright core contains cooler gas than its surroundings. This is the most distant galaxy cluster where such a \"cool core\" of gas has been observed. Astronomers think these cool cores are important in understanding how quickly hot gas cools off in clusters, influencing the rate at which stars are born. This cooling rate could be slowed down by outbursts from a supermassive black hole in the center of the cluster. Apart from the cool core, the hot gas in the cluster is remarkably symmetrical and smooth. This is another piece of evidence that IDCS 1426 formed very rapidly in the early universe.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           Astronomers note that, despite the high mass and rapid evolution of this cluster, its existence does not pose a threat to the standard model of cosmology.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           The Hubble Space Telescope is a project of international cooperation between NASA and ESA (European Space Agency). NASA's Goddard Space Flight Center manages the telescope. The Space Telescope Science Institute (STScI) in Baltimore, conducts Hubble science operations. STScI is operated for NASA by the Association of Universities for Research in Astronomy in Washington, D.C.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           NASA's Jet Propulsion Laboratory, Pasadena, California, manages the Spitzer Space Telescope mission for NASA's Science Mission Directorate in Washington. Science operations are conducted at the Spitzer Science Center at the California Institute of Technology in Pasadena. Spacecraft operations are based at Lockheed Martin Space Systems Company, Littleton, Colorado. Data are archived at the Infrared Science Archive housed at the Infrared Processing and Analysis Center at Caltech. Caltech manages JPL for NASA.\n",
+      "          </p>\n",
+      "          <p>\n",
+      "           More information about the NASA Great Observatories mentioned in this image caption is available at\n",
+      "           <a href=\"http://www.spitzer.caltech.edu\" target=\"new\">\n",
+      "            http://www.spitzer.caltech.edu\n",
+      "           </a>\n",
+      "           ,\n",
+      "           <a href=\"http://chandra.si.edu\" target=\"new\">\n",
+      "            http://chandra.si.edu\n",
+      "           </a>\n",
+      "           ,\n",
+      "           <a href=\"http://hubblesite.org\" target=\"new\">\n",
+      "            http://hubblesite.org\n",
+      "           </a>\n",
+      "           .\n",
       "          </p>\n",
       "         </div>\n",
       "         <a href=\"index.php?category=\">\n",
@@ -1478,8 +1474,16 @@
       "            <div class=\"mission\">\n",
       "             <p>\n",
       "              Mission:\n",
-      "              <a href=\"index.php?search=Gravity+Recovery+and+Climate+Experiment+%28GRACE%29\">\n",
-      "               Gravity Recovery and Climate Experiment (GRACE)\n",
+      "              <a href=\"index.php?search=Chandra+X-ray+Observatory\">\n",
+      "               Chandra X-ray Observatory\n",
+      "              </a>\n",
+      "              ,\n",
+      "              <a href=\"index.php?search=Herschel+Space+Observatory\">\n",
+      "               Herschel Space Observatory\n",
+      "              </a>\n",
+      "              ,\n",
+      "              <a href=\"index.php?search=Spitzer+Space+Telescope\">\n",
+      "               Spitzer Space Telescope\n",
       "              </a>\n",
       "             </p>\n",
       "            </div>\n",
@@ -1487,9 +1491,13 @@
       "           <li>\n",
       "            <div class=\"mission\">\n",
       "             <p>\n",
-      "              Target:\n",
-      "              <a href=\"index.php?search=Earth\">\n",
-      "               Earth\n",
+      "              Instrument:\n",
+      "              <a href=\"index.php?search=Chandra+X-ray+Telescope\">\n",
+      "               Chandra X-ray Telescope\n",
+      "              </a>\n",
+      "              ,\n",
+      "              <a href=\"index.php?search=Infrared+Array+Camera+%28IRAC%29\">\n",
+      "               Infrared Array Camera (IRAC)\n",
       "              </a>\n",
       "             </p>\n",
       "            </div>\n",
@@ -1497,7 +1505,7 @@
       "           <li>\n",
       "            <div class=\"views\">\n",
       "             <p>\n",
-      "              Views: 3,198\n",
+      "              Views: 6,112\n",
       "             </p>\n",
       "            </div>\n",
       "           </li>\n",
@@ -1505,8 +1513,8 @@
       "            <div class=\"download_tiff\">\n",
       "             <p>\n",
       "              Full-Res TIFF:\n",
-      "              <a href=\"//photojournal.jpl.nasa.gov/tiff/PIA19685.tif\">\n",
-      "               PIA19685.tif\n",
+      "              <a href=\"//photojournal.jpl.nasa.gov/tiff/PIA20063.tif\">\n",
+      "               PIA20063.tif\n",
       "              </a>\n",
       "             </p>\n",
       "            </div>\n",
@@ -1515,8 +1523,8 @@
       "            <div class=\"download_tiff\">\n",
       "             <p>\n",
       "              Full-Res JPG:\n",
-      "              <a href=\"//photojournal.jpl.nasa.gov/jpeg/PIA19685.jpg\">\n",
-      "               PIA19685.jpg\n",
+      "              <a href=\"//photojournal.jpl.nasa.gov/jpeg/PIA20063.jpg\">\n",
+      "               PIA20063.jpg\n",
       "              </a>\n",
       "             </p>\n",
       "            </div>\n",
@@ -1524,7 +1532,7 @@
       "           <li>\n",
       "            <div class=\"credit\">\n",
       "             <p>\n",
-      "              Image credit: NASA/JPL-Caltech/University of California, Irvine\n",
+      "              Image credit: NASA/CXC/Univ of Missouri/M.Brodwin et al; NASA/STScI; JPL/CalTech\n",
       "             </p>\n",
       "            </div>\n",
       "           </li>\n",
@@ -1535,57 +1543,60 @@
       "           Wallpaper\n",
       "          </h1>\n",
       "          Applying Wallpaper:\n",
-      "          <br/>\n",
-      "          1. Click on the screen resolution you would like to use.\n",
-      "          <br/>\n",
-      "          2. Right-click on the image (control-click on a Mac) and select the option 'Set the Background' or 'Set as Wallpaper' (or similar).\n",
-      "          <br/>\n",
-      "          <br/>\n",
-      "          <ul>\n",
-      "           <li>\n",
-      "            Fullscreen download sizes:\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-800x600.jpg\" target=\"_blank\">\n",
-      "             800 x 600\n",
-      "            </a>\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-1024x768.jpg\" target=\"_blank\">\n",
-      "             1024 x 768\n",
-      "            </a>\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-1280x1024.jpg\" target=\"_blank\">\n",
-      "             1280 x 1024\n",
-      "            </a>\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-1600x1200.jpg\" target=\"_blank\">\n",
-      "             1600 x 1200\n",
-      "            </a>\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <br/>\n",
-      "            Widescreen download sizes:\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-1280x800.jpg\" target=\"_blank\">\n",
-      "             1280 x 800\n",
-      "            </a>\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-1440x900.jpg\" target=\"_blank\">\n",
-      "             1440 x 900\n",
-      "            </a>\n",
-      "           </li>\n",
-      "           <li>\n",
-      "            <a href=\"images/wallpaper/PIA19685-1920x1200.jpg\" target=\"_blank\">\n",
-      "             1920 x 1200\n",
-      "            </a>\n",
-      "            <br/>\n",
-      "           </li>\n",
-      "          </ul>\n",
+      "          <br>\n",
+      "           1. Click on the screen resolution you would like to use.\n",
+      "           <br>\n",
+      "            2. Right-click on the image (control-click on a Mac) and select the option 'Set the Background' or 'Set as Wallpaper' (or similar).\n",
+      "            <br>\n",
+      "             <br/>\n",
+      "             <ul>\n",
+      "              <li>\n",
+      "               Fullscreen download sizes:\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-800x600.jpg\" target=\"_blank\">\n",
+      "                800 x 600\n",
+      "               </a>\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-1024x768.jpg\" target=\"_blank\">\n",
+      "                1024 x 768\n",
+      "               </a>\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-1280x1024.jpg\" target=\"_blank\">\n",
+      "                1280 x 1024\n",
+      "               </a>\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-1600x1200.jpg\" target=\"_blank\">\n",
+      "                1600 x 1200\n",
+      "               </a>\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <br/>\n",
+      "               Widescreen download sizes:\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-1280x800.jpg\" target=\"_blank\">\n",
+      "                1280 x 800\n",
+      "               </a>\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-1440x900.jpg\" target=\"_blank\">\n",
+      "                1440 x 900\n",
+      "               </a>\n",
+      "              </li>\n",
+      "              <li>\n",
+      "               <a href=\"images/wallpaper/PIA20063-1920x1200.jpg\" target=\"_blank\">\n",
+      "                1920 x 1200\n",
+      "               </a>\n",
+      "               <br/>\n",
+      "              </li>\n",
+      "             </ul>\n",
+      "            </br>\n",
+      "           </br>\n",
+      "          </br>\n",
       "         </aside>\n",
       "        </div>\n",
       "       </article>\n",
@@ -1600,56 +1611,56 @@
       "       </header>\n",
       "       <ul class=\"module_gallery gallery_list\">\n",
       "        <li class=\"slide\">\n",
-      "         <a href=\"/spaceimages/details.php?id=PIA23914\">\n",
+      "         <a href=\"/spaceimages/details.php?id=PIA23687\">\n",
       "          <div class=\"image_and_description_container\">\n",
       "           <div class=\"rollover_description\">\n",
-      "            NASAs Terra spacecraft shows Sangay Volcano, Ecuador, which erupted in early June, sending lava flows and pyroclastic flows down its southeastern flank.\n",
+      "            This animation shows two massive black holes in the OJ 287 galaxy.\n",
       "            <div class=\"overlay_arrow\">\n",
       "             <img alt=\"more arrow\" src=\"/assets/images/overlay-arrow.png\"/>\n",
       "            </div>\n",
       "           </div>\n",
-      "           <img alt=\"NASAs Terra spacecraft shows Sangay Volcano, Ecuador, which erupted in early June, sending lava flows and pyroclastic flows down its southeastern flank.\" src=\"/spaceimages/images/wallpaper/PIA23914-640x350.jpg\" title=\"NASAs Terra spacecraft shows Sangay Volcano, Ecuador, which erupted in early June, sending lava flows and pyroclastic flows down its southeastern flank.\"/>\n",
+      "           <img alt=\"This animation shows two massive black holes in the OJ 287 galaxy.\" src=\"/spaceimages/images/wallpaper/PIA23687-640x350.jpg\" title=\"This animation shows two massive black holes in the OJ 287 galaxy.\"/>\n",
       "          </div>\n",
       "          <div class=\"content_title\">\n",
-      "           Sangay Volcano, Ecuador\n",
+      "           Animation of Black Hole Disk Flare in OJ 287\n",
       "          </div>\n",
       "         </a>\n",
       "        </li>\n",
       "        <li class=\"slide\">\n",
-      "         <a href=\"/spaceimages/details.php?id=PIA23913\">\n",
+      "         <a href=\"/spaceimages/details.php?id=PIA23650\">\n",
       "          <div class=\"image_and_description_container\">\n",
       "           <div class=\"rollover_description\">\n",
-      "            NASAs Terra spacecraft shows Mount St. Helens, Washington, just after its eruption on May 18, 1980, 40 years ago.\n",
+      "            NASAs Spitzer Space Telescope took this image of the California Nebula on Jan. 25, 2020, five days before the spacecraft was decommissioned.\n",
       "            <div class=\"overlay_arrow\">\n",
       "             <img alt=\"more arrow\" src=\"/assets/images/overlay-arrow.png\"/>\n",
       "            </div>\n",
       "           </div>\n",
-      "           <img alt=\"NASAs Terra spacecraft shows Mount St. Helens, Washington, just after its eruption on May 18, 1980, 40 years ago.\" src=\"/spaceimages/images/wallpaper/PIA23913-640x350.jpg\" title=\"NASAs Terra spacecraft shows Mount St. Helens, Washington, just after its eruption on May 18, 1980, 40 years ago.\"/>\n",
+      "           <img alt=\"NASAs Spitzer Space Telescope took this image of the California Nebula on Jan. 25, 2020, five days before the spacecraft was decommissioned.\" src=\"/spaceimages/images/wallpaper/PIA23650-640x350.jpg\" title=\"NASAs Spitzer Space Telescope took this image of the California Nebula on Jan. 25, 2020, five days before the spacecraft was decommissioned.\"/>\n",
       "          </div>\n",
       "          <div class=\"content_title\">\n",
-      "           Mount St. Helens, Washington\n",
+      "           Spitzer California Nebula Mosaic\n",
       "          </div>\n",
       "         </a>\n",
       "        </li>\n",
       "        <li class=\"slide\">\n",
-      "         <a href=\"/spaceimages/details.php?id=PIA23912\">\n",
+      "         <a href=\"/spaceimages/details.php?id=PIA23774\">\n",
       "          <div class=\"image_and_description_container\">\n",
       "           <div class=\"rollover_description\">\n",
-      "            NASAs Terra spacecraft shows the many meanders and abandoned paleochannels of the Dneiper River in the Ukraine.\n",
+      "            This graphic compares the size of Earth and Kepler-1649c, an exoplanet only 1.06 times larger than Earth by radius.\n",
       "            <div class=\"overlay_arrow\">\n",
       "             <img alt=\"more arrow\" src=\"/assets/images/overlay-arrow.png\"/>\n",
       "            </div>\n",
       "           </div>\n",
-      "           <img alt=\"NASAs Terra spacecraft shows the many meanders and abandoned paleochannels of the Dneiper River in the Ukraine.\" src=\"/spaceimages/images/wallpaper/PIA23912-640x350.jpg\" title=\"NASAs Terra spacecraft shows the many meanders and abandoned paleochannels of the Dneiper River in the Ukraine.\"/>\n",
+      "           <img alt=\"This graphic compares the size of Earth and Kepler-1649c, an exoplanet only 1.06 times larger than Earth by radius.\" src=\"/spaceimages/images/wallpaper/PIA23774-640x350.jpg\" title=\"This graphic compares the size of Earth and Kepler-1649c, an exoplanet only 1.06 times larger than Earth by radius.\"/>\n",
       "          </div>\n",
       "          <div class=\"content_title\">\n",
-      "           Dneiper River, Ukraine\n",
+      "           Comparing the Size of Exoplanet Kepler-1649c and Earth (Illustration)\n",
       "          </div>\n",
       "         </a>\n",
       "        </li>\n",
       "       </ul>\n",
       "       <footer>\n",
-      "        <a class=\"outline_button dark\" href=\"index.php?category=Earth\">\n",
+      "        <a class=\"outline_button dark\" href=\"index.php?category=Universe\">\n",
       "         more images\n",
       "        </a>\n",
       "       </footer>\n",
@@ -2186,16 +2197,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 44,
+   "execution_count": 57,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "<a href=\"/spaceimages/images/largesize/PIA19685_hires.jpg\"><img alt=\"UC Irvine studies using NASA GRACE data find a third of Earth's largest groundwater basins are being rapidly depleted by human use, despite little data about how much water remains.\" class=\"main_image\" src=\"/spaceimages/images/largesize/PIA19685_hires.jpg\" title=\"UC Irvine studies using NASA GRACE data find a third of Earth's largest groundwater basins are being rapidly depleted by human use, despite little data about how much water remains.\"/></a>"
+       "<a href=\"/spaceimages/images/largesize/PIA20063_hires.jpg\"><img alt=\"Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA's Great Observatories. This rare galaxy cluster, located 10 billion light-years from Earth, is almost as massive as 500 trillion suns.\" class=\"main_image\" src=\"/spaceimages/images/largesize/PIA20063_hires.jpg\" title=\"Astronomers have made the most detailed study yet of an extremely massive young galaxy cluster using three of NASA's Great Observatories. This rare galaxy cluster, located 10 billion light-years from Earth, is almost as massive as 500 trillion suns.\"/></a>"
       ]
      },
-     "execution_count": 44,
+     "execution_count": 57,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2207,16 +2218,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 45,
+   "execution_count": 58,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "'/spaceimages/images/largesize/PIA19685_hires.jpg'"
+       "'/spaceimages/images/largesize/PIA20063_hires.jpg'"
       ]
      },
-     "execution_count": 45,
+     "execution_count": 58,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2224,55 +2235,6 @@
    "source": [
     "featured_image_url=image['href']\n",
     "featured_image_url"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 46,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def featured_image_function():\n",
-    "    from splinter import Browser\n",
-    "    executable_path = {'executable_path': 'chromedriver.exe'}\n",
-    "    browser = Browser('chrome', **executable_path, headless=False)\n",
-    "    url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'\n",
-    "    browser.visit(url)\n",
-    "    gallery_button=browser.links.find_by_partial_text('FULL IMAGE')\n",
-    "    gallery_button.click()\n",
-    "    browser.url\n",
-    "    more_info=browser.links.find_by_partial_text('more info').first\n",
-    "    more_info.click()\n",
-    "    url=browser.url\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    image_response = requests.get(url)\n",
-    "    soup = BeautifulSoup(image_response.text, 'html.parser')\n",
-    "    image=soup.body.find('figure').a\n",
-    "    featured_image_url=image['href']\n",
-    "    return featured_image_url\n",
-    "    \n",
-    "    "
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 47,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "'/spaceimages/images/largesize/PIA18297_hires.jpg'"
-      ]
-     },
-     "execution_count": 47,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "featured_image_function()"
    ]
   },
   {
@@ -2307,7 +2269,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "#data = requests.get(url)"
+    "data = requests.get(url)"
    ]
   },
   {
@@ -2316,7 +2278,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "#soup = BeautifulSoup(data.text, 'html.parser')"
+    "soup = BeautifulSoup(data.text, 'html.parser')"
    ]
   },
   {
@@ -2525,7 +2487,7 @@
     }
    ],
    "source": [
-    "#print(soup.prettify())"
+    "print(soup.prettify())"
    ]
   },
   {
@@ -2550,7 +2512,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "#mars_weather"
+    "mars_weather"
    ]
   },
   {
@@ -2611,57 +2573,10 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": 48,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def mars_facts_function():\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    import pandas as pd\n",
-    "    url=\"https://space-facts.com/mars/\"\n",
-    "    facts = requests.get(url)\n",
-    "    soup = BeautifulSoup(facts.content, 'lxml')\n",
-    "    table = soup.find_all('table')[0] \n",
-    "    df = pd.read_html(str(table))\n",
-    "    mars_facts=df[0].to_json(orient='records')\n",
-    "    return mars_facts\n",
-    "    "
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 49,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "'[{\"0\":\"Equatorial Diameter:\",\"1\":\"6,792 km\"},{\"0\":\"Polar Diameter:\",\"1\":\"6,752 km\"},{\"0\":\"Mass:\",\"1\":\"6.39 \\\\u00d7 10^23 kg (0.11 Earths)\"},{\"0\":\"Moons:\",\"1\":\"2 (Phobos & Deimos)\"},{\"0\":\"Orbit Distance:\",\"1\":\"227,943,824 km (1.38 AU)\"},{\"0\":\"Orbit Period:\",\"1\":\"687 days (1.9 years)\"},{\"0\":\"Surface Temperature:\",\"1\":\"-87 to -5 \\\\u00b0C\"},{\"0\":\"First Record:\",\"1\":\"2nd millennium BC\"},{\"0\":\"Recorded By:\",\"1\":\"Egyptian astronomers\"}]'"
-      ]
-     },
-     "execution_count": 49,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "mars_facts_function()"
-   ]
-  },
-  {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
     "# Mars Hemisphere"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "### Ceberus"
    ]
   },
   {
@@ -3626,50 +3541,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 50,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [],
    "source": [
-    "def ceberus_function():\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    url=\"https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars\"\n",
-    "    hemisphere=requests.get(url)\n",
-    "    soup = BeautifulSoup(hemisphere.text, 'html.parser')\n",
-    "    from splinter import Browser\n",
-    "    executable_path = {'executable_path': 'chromedriver.exe'}\n",
-    "    browser = Browser('chrome', **executable_path, headless=False)\n",
-    "    browser.visit(url)\n",
-    "    c_button=browser.links.find_by_partial_text('Cerberus')\n",
-    "    c_button.click()\n",
-    "    cerberus=browser.url\n",
-    "    response=requests.get(cerberus)\n",
-    "    soup = BeautifulSoup(response.text, 'html.parser')\n",
-    "    c_title=soup.body.find('h2',class_='title').text\n",
-    "    cerberus_img=soup.body.find('li').a['href']\n",
-    "    cerberus=dict({\"title\":c_title,\"img_url\":cerberus_img})\n",
-    "    return cerberus"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 51,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "{'title': 'Cerberus Hemisphere Enhanced',\n",
-       " 'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg'}"
-      ]
-     },
-     "execution_count": 51,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "ceberus_function()"
+    "#hemisphere_img_urls.append(cerberus)"
    ]
   },
   {
@@ -3746,57 +3622,8 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "Schiaparelli=dict({\"title\":s_title,\"img_url\":Schiaparelli_img})"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 52,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def schi_function():\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    url=\"https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars\"\n",
-    "    hemisphere=requests.get(url)\n",
-    "    soup = BeautifulSoup(hemisphere.text, 'html.parser')\n",
-    "    from splinter import Browser\n",
-    "    executable_path = {'executable_path': 'chromedriver.exe'}\n",
-    "    browser = Browser('chrome', **executable_path, headless=False)\n",
-    "    browser.visit(url)\n",
-    "    s_button=browser.links.find_by_partial_text('Schiaparelli')\n",
-    "    s_button.click()\n",
-    "    Schiaparelli=browser.url\n",
-    "    response2=requests.get(Schiaparelli)\n",
-    "    soup = BeautifulSoup(response2.text, 'html.parser')\n",
-    "    s_title=soup.body.find('h2',class_='title').text\n",
-    "    Schiaparelli_img=soup.body.find('li').a['href']\n",
-    "    Schiaparelli=dict({\"title\":s_title,\"img_url\":Schiaparelli_img})\n",
-    "    return Schiaparelli\n",
-    "\n",
-    "    "
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 53,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "{'title': 'Schiaparelli Hemisphere Enhanced',\n",
-       " 'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg'}"
-      ]
-     },
-     "execution_count": 53,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "schi_function()"
+    "Schiaparelli=dict({\"title\":s_title,\"img_url\":Schiaparelli_img})\n",
+    "#hemisphere_img_urls.append(Schiaparelli)"
    ]
   },
   {
@@ -3874,56 +3701,16 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "Syrtis=dict({\"title\":sy_title,\"img_url\":Syrtis_img})\n"
+    "Syrtis=dict({\"title\":sy_title,\"img_url\":Syrtis_img})\n",
+    "#hemisphere_img_urls.append(Syrtis)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 54,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
-   "source": [
-    "def syrtis_function():\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    url=\"https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars\"\n",
-    "    hemisphere=requests.get(url)\n",
-    "    soup = BeautifulSoup(hemisphere.text, 'html.parser')\n",
-    "    from splinter import Browser\n",
-    "    executable_path = {'executable_path': 'chromedriver.exe'}\n",
-    "    browser = Browser('chrome', **executable_path, headless=False)\n",
-    "    browser.visit(url)\n",
-    "    sy_button=browser.links.find_by_partial_text('Syrtis')\n",
-    "    sy_button.click()\n",
-    "    Syrtis=browser.url\n",
-    "    response3=requests.get(Syrtis)\n",
-    "    soup = BeautifulSoup(response3.text, 'html.parser')\n",
-    "    sy_title=soup.body.find('h2',class_='title').text\n",
-    "    Syrtis_img=soup.body.find('li').a['href']\n",
-    "    Syrtis=dict({\"title\":sy_title,\"img_url\":Syrtis_img})\n",
-    "    return Syrtis"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 55,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "{'title': 'Syrtis Major Hemisphere Enhanced',\n",
-       " 'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg'}"
-      ]
-     },
-     "execution_count": 55,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "syrtis_function()"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -4004,54 +3791,6 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": 56,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def valles_function():\n",
-    "    from bs4 import BeautifulSoup\n",
-    "    import requests\n",
-    "    url=\"https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars\"\n",
-    "    hemisphere=requests.get(url)\n",
-    "    soup = BeautifulSoup(hemisphere.text, 'html.parser')\n",
-    "    from splinter import Browser\n",
-    "    executable_path = {'executable_path': 'chromedriver.exe'}\n",
-    "    browser = Browser('chrome', **executable_path, headless=False)\n",
-    "    browser.visit(url)\n",
-    "    v_button=browser.links.find_by_partial_text('Valles')\n",
-    "    v_button.click()\n",
-    "    Valles=browser.url\n",
-    "    response4=requests.get(Valles)\n",
-    "    soup = BeautifulSoup(response4.text, 'html.parser')\n",
-    "    v_title=soup.body.find('h2',class_='title').text\n",
-    "    Valles_img=soup.body.find('li').a['href']\n",
-    "    Valles=dict({\"title\":v_title,\"img_url\":Valles_img})\n",
-    "    return Valles"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 57,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "{'title': 'Valles Marineris Hemisphere Enhanced',\n",
-       " 'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg'}"
-      ]
-     },
-     "execution_count": 57,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "valles_function()"
-   ]
-  },
-  {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
@@ -4101,81 +3840,6 @@
    ],
    "source": [
     "hemisphere_img_urls"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 65,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def hemispheres():\n",
-    "    hemisphere_img_urls=[]\n",
-    "    hemisphere_img_urls=[ceberus_function(),schi_function(),syrtis_function(),valles_function()]\n",
-    "    #results = [f() for f in hemisphere_img_urls]\n",
-    "    #return results\n",
-    "    return hemisphere_img_urls"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 66,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "[{'title': 'Cerberus Hemisphere Enhanced',\n",
-       "  'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg'},\n",
-       " {'title': 'Schiaparelli Hemisphere Enhanced',\n",
-       "  'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg'},\n",
-       " {'title': 'Syrtis Major Hemisphere Enhanced',\n",
-       "  'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg'},\n",
-       " {'title': 'Valles Marineris Hemisphere Enhanced',\n",
-       "  'img_url': 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg'}]"
-      ]
-     },
-     "execution_count": 66,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "hemispheres()"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 67,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def init_browser():\n",
-    "    executable_path = {\"executable_path\": \"chromedriver.exe\"} # WINDOWS USERS!\n",
-    "    return Browser(\"chrome\", **executable_path, headless=False)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 68,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "def scrape():\n",
-    "    browser = init_browser()\n",
-    "    mars_info = {}\n",
-    "    mars_info[\"news\"]=news_function()\n",
-    "    mars_info[\"featured_image\"]=featured_image_function()\n",
-    "    mars_info[\"facts\"]=mars_facts_function()\n",
-    "    mars_info[\"hemispheres\"]=hemispheres()\n",
-    "    return mars_info"
    ]
   },
   {
