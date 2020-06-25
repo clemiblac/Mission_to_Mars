@@ -41,29 +41,34 @@ def scrape_info():
     
         
 
-    """
+   
     # ## Mars Weather
-    #url='https://twitter.com/marswxreport?lang=en'
+    #def mars_weather_function():
 
-    #data = requests.get(url)
-    #soup = BeautifulSoup(data.text, 'html.parser')
-    #mars_weather = soup.find("p", "tweet-text").get_text()
-    #mars_weather
+        #url='https://twitter.com/marswxreport?lang=en'
 
+        #data = requests.get(url)
+        #soup = BeautifulSoup(data.text, 'html.parser')
+        #mars_weather = soup.find("p", "tweet-text").get_text()
+        #mars_weather
 
+    
     # # Mars Facts
     def mars_facts_function():
         import pandas as pd
         url="https://space-facts.com/mars/"
         browser.visit(url)
         facts = requests.get(url)
-        soup = BeautifulSoup(facts.content, 'lxml')
+        soup = BeautifulSoup(facts.content, 'html')
         table = soup.find_all('table')[0] 
         df = pd.read_html(str(table))
+        #mars_facts=df[0]
         mars_facts=df[0].to_json(orient='records')
+        #html_table=mars_facts.to_html()
+        #return html_table
         return mars_facts
         
-
+    """
 
     # # Mars Hemisphere
 
@@ -157,9 +162,10 @@ def scrape_info():
 
     mars_info = {
     'news':news_function(),
-    'featured_image':featured_image_function()
+    'featured_image':featured_image_function(),
+    #'mars_weather':mars_weather_function()
+    'mars_facts':mars_facts_function()
     #,
-    #'mars facts':mars_facts_function(),
     #'hemispheres':hemispheres()
     }
     return mars_info
