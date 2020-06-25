@@ -2,22 +2,22 @@
 # coding: utf-8
 
 # In[ ]:
-def init_browser():
-    executable_path = {"executable_path": "chromedriver.exe"} # WINDOWS USERS!
-    return Browser("chrome", **executable_path, headless=False)
+
 
 
 
 
 # # NASA Mars News
 
-# In[11]:
+# In[1]:
 
 
 # Dependencies
 from bs4 import BeautifulSoup
 import requests
 from splinter import Browser
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=False)
 
 
 # In[2]:
@@ -48,12 +48,6 @@ soup = BeautifulSoup(response.text, 'html.parser')
 print(soup.prettify())
 
 
-# In[ ]:
-
-
-
-
-
 # In[6]:
 
 
@@ -72,22 +66,22 @@ news_p=news_p.strip('\n')
 news_p
 
 
-# In[ ]:
+# In[8]:
 
 
 news=dict({'title':news_title,'text':news_p})
 
 
-# In[20]:
+# In[10]:
 
 
 def news_function():
     from bs4 import BeautifulSoup
     import requests
     from splinter import Browser
-    url='https://mars.nasa.gov/news/'
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
+    url='https://mars.nasa.gov/news/'
     browser.visit(url)
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -99,7 +93,7 @@ def news_function():
     return news 
 
 
-# In[22]:
+# In[11]:
 
 
 news_function()
@@ -107,16 +101,17 @@ news_function()
 
 # ## JPL Mars Space Images - Featured Image
 
-# In[34]:
+# In[12]:
 
 
-#Setting up splinter for image scraping
+from bs4 import BeautifulSoup
+import requests
 from splinter import Browser
 executable_path = {'executable_path': 'chromedriver.exe'}
 browser = Browser('chrome', **executable_path, headless=False)
 
 
-# In[35]:
+# In[13]:
 
 
 #Find featured Image url
@@ -124,7 +119,7 @@ url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
 browser.visit(url)
 
 
-# In[36]:
+# In[14]:
 
 
 #Find and click for featured image in gallery
@@ -132,13 +127,13 @@ gallery_button=browser.links.find_by_partial_text('FULL IMAGE')
 gallery_button.click()
 
 
-# In[37]:
+# In[15]:
 
 
 browser.url
 
 
-# In[38]:
+# In[16]:
 
 
 # Find and click the image thumbnail
@@ -146,57 +141,52 @@ more_info=browser.links.find_by_partial_text('more info').first
 more_info.click()
 
 
-# In[39]:
+# In[17]:
 
 
 url=browser.url
 
 
-# In[40]:
-
-
-from bs4 import BeautifulSoup
-import requests
-
-
-# In[41]:
+# In[18]:
 
 
 image_response = requests.get(url)
 
 
-# In[42]:
+# In[19]:
 
 
 # Create BeautifulSoup object; parse with 'html.parser'
 soup = BeautifulSoup(image_response.text, 'html.parser')
 
 
-# In[43]:
+# In[20]:
 
 
 # Examine the results, then determine element that contains sought info
 print(soup.prettify())
 
 
-# In[44]:
+# In[21]:
 
 
 image=soup.body.find('figure').a
 image
 
 
-# In[45]:
+# In[22]:
 
 
 featured_image_url=image['href']
 featured_image_url
 
 
-# In[46]:
+# In[23]:
 
 
 def featured_image_function():
+    from bs4 import BeautifulSoup
+    import requests
     from splinter import Browser
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -208,8 +198,6 @@ def featured_image_function():
     more_info=browser.links.find_by_partial_text('more info').first
     more_info.click()
     url=browser.url
-    from bs4 import BeautifulSoup
-    import requests
     image_response = requests.get(url)
     soup = BeautifulSoup(image_response.text, 'html.parser')
     image=soup.body.find('figure').a
@@ -219,7 +207,7 @@ def featured_image_function():
     
 
 
-# In[47]:
+# In[24]:
 
 
 featured_image_function()
@@ -227,32 +215,41 @@ featured_image_function()
 
 # ## Mars Weather
 
-# In[62]:
+# In[ ]:
 
 
-from bs4 import BeautifulSoup
-import requests
+#from bs4 import BeautifulSoup
+#import requests
+#from splinter import Browser
+#executable_path = {'executable_path': 'chromedriver.exe'}
+#browser = Browser('chrome', **executable_path, headless=False)
 
 
-# In[63]:
+# In[ ]:
 
 
-url='https://twitter.com/marswxreport?lang=en'
+#url='https://twitter.com/marswxreport?lang=en'
 
 
-# In[64]:
+# In[ ]:
+
+
+
+
+
+# In[ ]:
 
 
 #data = requests.get(url)
 
 
-# In[66]:
+# In[ ]:
 
 
 #soup = BeautifulSoup(data.text, 'html.parser')
 
 
-# In[67]:
+# In[ ]:
 
 
 #print(soup.prettify())
@@ -278,33 +275,37 @@ url='https://twitter.com/marswxreport?lang=en'
 
 # # Mars Facts
 
-# In[ ]:
+# In[25]:
 
 
 from bs4 import BeautifulSoup
 import requests
+from splinter import Browser
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=False)
 import pandas as pd
 
 
-# In[ ]:
+# In[26]:
 
 
 url="https://space-facts.com/mars/"
+browser.visit(url)
 
 
-# In[ ]:
+# In[27]:
 
 
 facts = requests.get(url)
 
 
-# In[ ]:
+# In[28]:
 
 
 soup = BeautifulSoup(facts.content, 'lxml')
 
 
-# In[ ]:
+# In[29]:
 
 
 table = soup.find_all('table')[0] 
@@ -313,14 +314,18 @@ mars_facts=df[0].to_json(orient='records')
 mars_facts
 
 
-# In[48]:
+# In[30]:
 
 
 def mars_facts_function():
     from bs4 import BeautifulSoup
     import requests
+    from splinter import Browser
+    executable_path = {'executable_path': 'chromedriver.exe'}
+    browser = Browser('chrome', **executable_path, headless=False)
     import pandas as pd
     url="https://space-facts.com/mars/"
+    browser.visit(url)
     facts = requests.get(url)
     soup = BeautifulSoup(facts.content, 'lxml')
     table = soup.find_all('table')[0] 
@@ -330,7 +335,7 @@ def mars_facts_function():
     
 
 
-# In[49]:
+# In[31]:
 
 
 mars_facts_function()
@@ -338,47 +343,45 @@ mars_facts_function()
 
 # # Mars Hemisphere
 
-# ### Ceberus
+# ### Cerberus
 
-# In[1]:
+# In[32]:
 
 
 from bs4 import BeautifulSoup
 import requests
+from splinter import Browser
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=False)
 
 
-# In[2]:
+# In[33]:
 
 
 url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+
+
+# In[34]:
+
 
 hemisphere=requests.get(url)
 
 soup = BeautifulSoup(hemisphere.text, 'html.parser')
 
 
-# In[3]:
+# In[35]:
 
 
 print(soup.prettify())
 
 
-# In[4]:
-
-
-#Setting up splinter for image scraping
-from splinter import Browser
-executable_path = {'executable_path': 'chromedriver.exe'}
-browser = Browser('chrome', **executable_path, headless=False)
-
-
-# In[5]:
+# In[36]:
 
 
 browser.visit(url)
 
 
-# In[6]:
+# In[37]:
 
 
 #Find and click for featured image in gallery
@@ -386,14 +389,14 @@ c_button=browser.links.find_by_partial_text('Cerberus')
 c_button.click()
 
 
-# In[7]:
+# In[38]:
 
 
 cerberus=browser.url
 print(cerberus)
 
 
-# In[8]:
+# In[39]:
 
 
 response=requests.get(cerberus)
@@ -402,39 +405,41 @@ soup = BeautifulSoup(response.text, 'html.parser')
 print(soup.prettify())
 
 
-# In[9]:
+# In[40]:
 
 
 c_title=soup.body.find('h2',class_='title').text
 c_title
 
 
-# In[10]:
+# In[41]:
 
 
 cerberus_img=soup.body.find('li').a['href']
 cerberus_img
 
 
-# In[12]:
+# In[42]:
 
 
 cerberus=dict({"title":c_title,"img_url":cerberus_img})
 cerberus
 
 
-# In[50]:
+# In[43]:
 
 
-def ceberus_function():
+def cerberus_function():
     from bs4 import BeautifulSoup
     import requests
-    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    hemisphere=requests.get(url)
-    soup = BeautifulSoup(hemisphere.text, 'html.parser')
     from splinter import Browser
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
+    
+    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    
+    hemisphere=requests.get(url)
+    soup = BeautifulSoup(hemisphere.text, 'html.parser')
     browser.visit(url)
     c_button=browser.links.find_by_partial_text('Cerberus')
     c_button.click()
@@ -447,15 +452,25 @@ def ceberus_function():
     return cerberus
 
 
-# In[51]:
+# In[44]:
 
 
-ceberus_function()
+cerberus_function()
 
 
 # ### Schiaparelli
 
-# In[14]:
+# In[45]:
+
+
+from bs4 import BeautifulSoup
+import requests
+from splinter import Browser
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=False)
+
+
+# In[46]:
 
 
 url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -467,7 +482,7 @@ soup = BeautifulSoup(hemisphere.text, 'html.parser')
 browser.visit(url)
 
 
-# In[15]:
+# In[47]:
 
 
 s_button=browser.links.find_by_partial_text('Schiaparelli')
@@ -481,7 +496,7 @@ response2=requests.get(Schiaparelli)
 soup = BeautifulSoup(response2.text, 'html.parser')
 
 
-# In[16]:
+# In[48]:
 
 
 s_title=soup.body.find('h2',class_='title').text
@@ -490,24 +505,27 @@ Schiaparelli_img=soup.body.find('li').a['href']
 print(Schiaparelli_img)
 
 
-# In[17]:
+# In[49]:
 
 
 Schiaparelli=dict({"title":s_title,"img_url":Schiaparelli_img})
 
 
-# In[52]:
+# In[50]:
 
 
 def schi_function():
     from bs4 import BeautifulSoup
     import requests
-    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    hemisphere=requests.get(url)
-    soup = BeautifulSoup(hemisphere.text, 'html.parser')
     from splinter import Browser
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
+    
+    
+    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    hemisphere=requests.get(url)
+    soup = BeautifulSoup(hemisphere.text, 'html.parser')
+    
     browser.visit(url)
     s_button=browser.links.find_by_partial_text('Schiaparelli')
     s_button.click()
@@ -522,7 +540,7 @@ def schi_function():
     
 
 
-# In[53]:
+# In[51]:
 
 
 schi_function()
@@ -530,7 +548,17 @@ schi_function()
 
 # ### Syrtis
 
-# In[18]:
+# In[52]:
+
+
+from bs4 import BeautifulSoup
+import requests
+from splinter import Browser
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=False)
+
+
+# In[53]:
 
 
 #Go back to main page
@@ -543,7 +571,7 @@ soup = BeautifulSoup(hemisphere.text, 'html.parser')
 browser.visit(url)
 
 
-# In[19]:
+# In[54]:
 
 
 sy_button=browser.links.find_by_partial_text('Syrtis')
@@ -557,7 +585,7 @@ response3=requests.get(Syrtis)
 soup = BeautifulSoup(response3.text, 'html.parser')
 
 
-# In[20]:
+# In[55]:
 
 
 sy_title=soup.body.find('h2',class_='title').text
@@ -566,24 +594,26 @@ Syrtis_img=soup.body.find('li').a['href']
 print(Syrtis_img)
 
 
-# In[21]:
+# In[56]:
 
 
 Syrtis=dict({"title":sy_title,"img_url":Syrtis_img})
 
 
-# In[54]:
+# In[57]:
 
 
 def syrtis_function():
     from bs4 import BeautifulSoup
     import requests
-    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    hemisphere=requests.get(url)
-    soup = BeautifulSoup(hemisphere.text, 'html.parser')
     from splinter import Browser
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
+    
+    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    hemisphere=requests.get(url)
+    soup = BeautifulSoup(hemisphere.text, 'html.parser')
+    
     browser.visit(url)
     sy_button=browser.links.find_by_partial_text('Syrtis')
     sy_button.click()
@@ -596,7 +626,7 @@ def syrtis_function():
     return Syrtis
 
 
-# In[55]:
+# In[58]:
 
 
 syrtis_function()
@@ -604,10 +634,21 @@ syrtis_function()
 
 # ### Valles
 
-# In[22]:
+# In[59]:
+
+
+from bs4 import BeautifulSoup
+import requests
+from splinter import Browser
+executable_path = {'executable_path': 'chromedriver.exe'}
+browser = Browser('chrome', **executable_path, headless=False)
+
+
+# In[60]:
 
 
 #Go back to main page
+
 url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 
 hemisphere=requests.get(url)
@@ -617,7 +658,7 @@ soup = BeautifulSoup(hemisphere.text, 'html.parser')
 browser.visit(url)
 
 
-# In[24]:
+# In[61]:
 
 
 v_button=browser.links.find_by_partial_text('Valles')
@@ -631,7 +672,7 @@ response4=requests.get(Valles)
 soup = BeautifulSoup(response4.text, 'html.parser')
 
 
-# In[25]:
+# In[62]:
 
 
 v_title=soup.body.find('h2',class_='title').text
@@ -640,24 +681,27 @@ Valles_img=soup.body.find('li').a['href']
 print(Valles_img)
 
 
-# In[26]:
+# In[63]:
 
 
 Valles=dict({"title":v_title,"img_url":Valles_img})
 
 
-# In[56]:
+# In[64]:
 
 
 def valles_function():
     from bs4 import BeautifulSoup
     import requests
-    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    hemisphere=requests.get(url)
-    soup = BeautifulSoup(hemisphere.text, 'html.parser')
     from splinter import Browser
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
+    
+    url="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    hemisphere=requests.get(url)
+    soup = BeautifulSoup(hemisphere.text, 'html.parser')
+
+    
     browser.visit(url)
     v_button=browser.links.find_by_partial_text('Valles')
     v_button.click()
@@ -670,7 +714,7 @@ def valles_function():
     return Valles
 
 
-# In[57]:
+# In[65]:
 
 
 valles_function()
@@ -678,48 +722,69 @@ valles_function()
 
 # #### Append dictionaries to list
 
-# In[27]:
+# In[71]:
 
 
 hemisphere_img_urls=[]
 
 
-# In[28]:
+# In[72]:
 
 
 hemisphere_img_urls=[cerberus,Schiaparelli,Syrtis,Valles]
 
 
-# In[29]:
+# In[73]:
 
 
+#Returning dictionaries saved in the hemisphere names in the list above
 hemisphere_img_urls
 
 
-# In[60]:
+# In[74]:
 
 
 def hemispheres():
     hemisphere_img_urls=[]
-    hemisphere_img_urls=[ceberus_function,schi_function,syrtis_function,valles_function]
-    results = [f() for f in hemisphere_img_urls]
-    return results
+    hemisphere_img_urls=[cerberus,Schiaparelli,Syrtis,Valles]
+    return hemisphere_img_urls
 
 
-# In[61]:
+# In[75]:
 
 
 hemispheres()
 
 
-# In[ ]:
+# ### final scrape function
+
+# In[76]:
+
 
 def scrape():
-    mars_info = {}
-    mars_info["news"]=news_function()
-    mars_info["featured_image"]=featured_image_function()
-    mars_info["facts"]=mars_facts_function()
-    mars_info["hemispheres"]=hemispheres()
+    mars_info = {
+        'news':news_function(),
+        'featured_image':featured_image_function(),
+        'mars facts':mars_facts_function(),
+        'hemispheres':hemispheres()
+    }
     return mars_info
+
+
+# In[77]:
+
+
+scrape()
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
 
 
