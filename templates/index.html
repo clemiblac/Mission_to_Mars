@@ -20,22 +20,25 @@
     <!--Latest Mars News -->
     <div class="row" id="latest-news">
       <div class="col-md-12">
-        <h3 class="heading">Latest Mars News</h3>
-        <p>{{mars_info.news}}</p>
+        <h3 class="heading"><strong>Latest Mars News</strong></h3>
+        <h4><strong>{{mars_info.news.title}}</strong></h4>
+        <p>{{mars_info.news.text}}</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-7" id="featured_image" style="background-color: blue;">
-        <img src="mars_info.featured_image" alt="Featured Image" width="800" height="800">
+      <div class="col-md-7" id="featured_image">
+        <h3 class="heading"><strong>Featured Mars Image</strong></h3>
+        <img src={{mars_info.featured_image}} alt="Featured Image" width="700px" height="500px">
       </div>
 
       <div class="col-md-1" style="background-color:red;">
 
       </div>
 
-      <div class="col-md-4" style="background-color:green;">
-        <h4>Mars Facts</h4>
+      <div class="col-md-4">
+        <h4>weather info goes here</h4>
+        <h4><strong>Facts</strong></h4>
         <p>{{mars_info.facts}}</p>
       </div>
 
