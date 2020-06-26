@@ -38,27 +38,15 @@
 
       <div class="col-md-4">
         <h5>Current Weather on Mars</h5>
-        <p>weather info goes here</p>
+        <p>{{mars_info.mars_weather}}</p>
         <p>                       </p>
       
 
         <h4><strong>Mars Facts</strong></h4>
-        <table style="width:25%">
-          <!-- table header -->
-          <tr>
-             {% for key in mars_info.mars_facts[0] %}
-             <th> {{ key }} </th>
-             {% endfor %}
-          </tr>
-        
-          <!-- table rows -->
-          <tr>
-            {% for dict_item in mars_info.mars_facts %}
-             <td> {{ dict_item}} </td>
-             {% endfor %}
-          </tr>
-        </table>
-        
+        {{mars_info.mars_facts|safe}}   
+
+ 
+         
         
       </div>
 

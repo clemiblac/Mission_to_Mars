@@ -16,7 +16,9 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
    mars_info = mongo.db.mars_info.find_one()
-   print(mars_info)
+   #print('--- app route ---')
+   #print(mars_info)
+   #print('--- app route ---')
    return render_template("index.html", mars_info=mars_info)
 
 @app.route("/scrape")
@@ -24,6 +26,7 @@ def scrape():
     mars_info= mongo.db.mars_info
     mars_data = scrape_mars.scrape_info()
     mars_info.update({}, mars_data, upsert=True)
+    #print(f'updated: {mars_data}')
     return redirect("/", code=302)
 
 

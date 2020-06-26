@@ -3,6 +3,8 @@
 from bs4 import BeautifulSoup
 import requests
 from splinter import Browser
+#from time import time
+import time
 
 def scrape_info():
 
@@ -43,14 +45,25 @@ def scrape_info():
 
    
     # ## Mars Weather
-    #def mars_weather_function():
-
-        #url='https://twitter.com/marswxreport?lang=en'
-
+    def mars_weather_function():
+        #from time import time
+        url='https://twitter.com/marswxreport?lang=en'
+        browser.visit(url)
         #data = requests.get(url)
-        #soup = BeautifulSoup(data.text, 'html.parser')
-        #mars_weather = soup.find("p", "tweet-text").get_text()
-        #mars_weather
+        data = browser.html
+        #print(data)
+        time.sleep(5)
+        try:
+            soup = BeautifulSoup(data, 'html.parser')
+            mars_weather = soup.find("span", "r-qvutc0").get_text()
+            return mars_weather
+        except Exception as e:
+            print(e)
+         
+
+        #<span class="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo">InSight sol 561 (2020-06-25) low -89.7ºC (-129.5ºF) high -2.9ºC (26.8ºF)
+        #winds from the W at 5.7 m/s (12.8 mph) gusting to 17.8 m/s (39.8 mph)
+        #pressure at 7.60 hPa</span>    
 
     
     # # Mars Facts
@@ -63,8 +76,13 @@ def scrape_info():
         table = soup.find_all('table')[0] 
         df = pd.read_html(str(table))
         mars_facts=df[0]
-        mars_facts=df[0].to_json(orient='records')
-        return mars_facts
+        #mars_facts=df[0].to_json(orient='records')
+        html_table=mars_facts.to_html()
+        #print('--- mars_facts_function ---')
+        #print(html_table)
+        #print('--- mars_facts_function ---')
+        return html_table
+        #return mars_facts
         
     """
 
@@ -161,16 +179,17 @@ def scrape_info():
     mars_info = {
     'news':news_function(),
     'featured_image':featured_image_function(),
-    #'mars_weather':mars_weather_function()
+    'mars_weather':mars_weather_function(),
     'mars_facts':mars_facts_function()
     #,
     #'hemispheres':hemispheres()
     }
+
     return mars_info
 
 
-if __name__ == "__main__":
-    print(scrape_info())
+#if __name__ == "__main__":
+    #print(scrape_info())
 
 
 
