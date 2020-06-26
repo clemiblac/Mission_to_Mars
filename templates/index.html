@@ -37,16 +37,28 @@
       </div>
 
       <div class="col-md-4">
-        <div class="row; border-color: coral;">
-          <h5>Current Weather on Mars</h5>
-          <p>weather info goes here</p>
-          <p>                       </p>
-        </div>
+        <h5>Current Weather on Mars</h5>
+        <p>weather info goes here</p>
+        <p>                       </p>
+      
 
-        <div class="row">
-          <h4><strong>Mars Facts</strong></h4>
-          {{mars_info.mars_facts}}
-        </div>
+        <h4><strong>Mars Facts</strong></h4>
+        <table style="width:25%">
+          <!-- table header -->
+          <tr>
+             {% for key in mars_info.mars_facts[0] %}
+             <th> {{ key }} </th>
+             {% endfor %}
+          </tr>
+        
+          <!-- table rows -->
+          <tr>
+            {% for dict_item in mars_info.mars_facts %}
+             <td> {{ dict_item}} </td>
+             {% endfor %}
+          </tr>
+        </table>
+        
         
       </div>
 

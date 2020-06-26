@@ -62,10 +62,8 @@ def scrape_info():
         soup = BeautifulSoup(facts.content, 'html')
         table = soup.find_all('table')[0] 
         df = pd.read_html(str(table))
-        #mars_facts=df[0]
+        mars_facts=df[0]
         mars_facts=df[0].to_json(orient='records')
-        #html_table=mars_facts.to_html()
-        #return html_table
         return mars_facts
         
     """
