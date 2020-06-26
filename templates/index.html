@@ -36,18 +36,12 @@
         <!--This is an empty column for design-->
       </div>
 
+      <!-- Code for Mars Facts table-->
       <div class="col-md-4">
-        <h5>Current Weather on Mars</h5>
-        <p>{{mars_info.mars_weather}}</p>
-        <p>                       </p>
-      
-
+        <!--Running the code in safe mode allows the to_html to be read as code-->
         <h4><strong>Mars Facts</strong></h4>
         {{mars_info.mars_facts|safe}}   
-
- 
          
-        
       </div>
 
     </div>
