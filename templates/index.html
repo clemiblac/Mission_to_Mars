@@ -39,11 +39,42 @@
       <!-- Code for Mars Facts table-->
       <div class="col-md-4">
         <!--Running the code in safe mode allows the to_html to be read as code-->
-        <h4><strong>Mars Facts</strong></h4>
+        <h4 style="padding-top:20px;"><strong>Mars Facts</strong></h4>
         {{mars_info.mars_facts|safe}}   
-         
+      </div>
+    </div>
+    <article>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Mars Hemispheres</h3>
+        </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-6">
+          <img src={{mars_info.hemispheres[0].img_ur}} alt="Featured Image" width="500px" height="500px">
+          <p>{{mars_info.hemispheres[0].title}}</p>
+        </div>
+        <div class="col-md-6">
+          <img src={{mars_info.hemispheres[1].img_ur}} alt="Featured Image" width="500px" height="500px">
+          <p>{{mars_info.hemispheres[1].title}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <img src={{mars_info.hemispheres[2].img_ur}} alt="Featured Image" width="500px" height="500px">
+          <p>{{mars_info.hemispheres[2].title}}</p>
+        </div>
+        <div class="col-md-6">
+          <img src={{mars_info.hemispheres[3].img_ur}} alt="Featured Image" width="500px" height="500px">
+          <p>{{mars_info.hemispheres[3].title}}</p>
+        </div>
+      </div>
+
+    </article>
+      
+      
     </div>
 
     

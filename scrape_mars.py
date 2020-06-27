@@ -49,7 +49,7 @@ def scrape_info():
         url="https://space-facts.com/mars/"
         browser.visit(url)
         facts = requests.get(url)
-        soup = BeautifulSoup(facts.content, 'html')
+        soup = BeautifulSoup(facts.content, 'lxml')
         table = soup.find_all('table')[0] 
         df = pd.read_html(str(table))
         mars_facts=df[0]
@@ -150,7 +150,6 @@ def scrape_info():
     mars_info = {
     'news':news_function(),
     'featured_image':featured_image_function(),
-    'mars_weather':mars_weather_function(),
     'mars_facts':mars_facts_function(),
     'hemispheres':hemispheres()
     }
