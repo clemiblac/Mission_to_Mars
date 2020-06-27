@@ -19,7 +19,7 @@
 
     <!--Latest Mars News -->
     <div class="row" id="latest-news">
-      <div class="col-md-12" style="background-color:paleturquoise;">
+      <div class="col-md-12" style="border-style: outset;">
         <h3 class="heading"><strong>Latest Mars News</strong></h3>
         <h4><strong>{{mars_info.news.title}}</strong></h4>
         <p>{{mars_info.news.text}}</p>
@@ -37,7 +37,7 @@
       </div>
 
       <!-- Code for Mars Facts table-->
-      <div class="col-md-4">
+      <div class="col-md-4" style="border-style: outset;margin-top: 20px;">
         <!--Running the code in safe mode allows the to_html to be read as code-->
         <h4 style="padding-top:20px;"><strong>Mars Facts</strong></h4>
         {{mars_info.mars_facts|safe}}   
@@ -46,29 +46,29 @@
     <article>
       <div class="row">
         <div class="col-md-12">
-          <h3>Mars Hemispheres</h3>
+          <h3 style="text-align:center;">Mars Hemispheres</h3>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
-          <img src={{mars_info.hemispheres[0].img_ur}} alt="Featured Image" width="500px" height="500px">
-          <p>{{mars_info.hemispheres[0].title}}</p>
+        <div class="col-md-6" style="border-style: outset;">
+          <img src={{mars_info.hemispheres[0].img_url}} alt="Cerberus" width="500px" height="500px">
+          <p><strong>{{mars_info.hemispheres[0].title}}</strong></p>
         </div>
-        <div class="col-md-6">
-          <img src={{mars_info.hemispheres[1].img_ur}} alt="Featured Image" width="500px" height="500px">
-          <p>{{mars_info.hemispheres[1].title}}</p>
+        <div class="col-md-6" style="border-style: outset;">
+          <img src={{mars_info.hemispheres[1].img_url}} alt="Schiaparelli" width="500px" height="500px">
+          <p><strong>{{mars_info.hemispheres[1].title}}</strong></p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
-          <img src={{mars_info.hemispheres[2].img_ur}} alt="Featured Image" width="500px" height="500px">
-          <p>{{mars_info.hemispheres[2].title}}</p>
+        <div class="col-md-6" style="border-style: outset;">
+          <img src={{mars_info.hemispheres[2].img_url}} alt="Syrtis" width="500px" height="500px">
+          <p><strong>{{mars_info.hemispheres[2].title}}</strong></p>
         </div>
-        <div class="col-md-6">
-          <img src={{mars_info.hemispheres[3].img_ur}} alt="Featured Image" width="500px" height="500px">
-          <p>{{mars_info.hemispheres[3].title}}</p>
+        <div class="col-md-6" style="border-style: outset;"> 
+          <img src={{mars_info.hemispheres[3].img_url}} alt="Valles" width="500px" height="500px">
+          <p><strong>{{mars_info.hemispheres[3].title}}</strong></p>
         </div>
       </div>
 
