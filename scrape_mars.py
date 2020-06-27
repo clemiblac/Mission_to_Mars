@@ -3,8 +3,6 @@
 from bs4 import BeautifulSoup
 import requests
 from splinter import Browser
-#from time import time
-import time
 
 def scrape_info():
 
