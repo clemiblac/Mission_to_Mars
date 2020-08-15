@@ -2,21 +2,12 @@
 
 ![mission_to_mars](Images/mission_to_mars.png)
 
-In this assignment, you will build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. The following outlines what you need to do.
+In this project, I built a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. The following outlines what I did.
 
-### Before You Begin
+##  Scraping
+I completed the initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
-1. Inside your local homework  repository, create a directory for the web scraping challenge. Use a folder name to correspond to the challenge: **Missions_to_Mars**.
-
-2. Add your notebook files to this folder as well as your flask app.
-
-3. Push the above changes to GitHub.
-
-## Step 1 - Scraping
-
-Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
-
-* Create a Jupyter Notebook file called `mission_to_mars.ipynb` and use this to complete all of your scraping and analysis tasks. The following outlines what you need to scrape.
+* In the Jupyter Notebook file called `mission_to_mars.ipynb`, I completed all of my scraping and analysis tasks. The following outlines what I scraped.
 
 ### NASA Mars News
 
